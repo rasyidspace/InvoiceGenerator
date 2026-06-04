@@ -32,10 +32,10 @@ export interface InvoiceData {
 }
 
 export const defaultInvoiceData: InvoiceData = {
-  studioName: 'ACME Studio',
-  website: 'www.acmestudio.com',
+  studioName: 'R24 Studio',
+  website: 'www.r24studio.com',
   title: 'INVOICE',
-  codename: 'ACME',
+  codename: 'R24',
   projectNumber: '001',
   issuedTo: 'Client Name\nClient Company\nClient Address',
   date: new Date().toISOString().split('T')[0],
@@ -43,7 +43,7 @@ export const defaultInvoiceData: InvoiceData = {
   paymentStatus: 'UNPAID',
   downPayment: 0,
   paymentTerm: 'Please pay within 15 days of receiving this invoice.',
-  footerContact: 'hello@acmestudio.com | +62 812 3456 7890',
+  footerContact: 'hello@r24studio.com | +62 812 3456 7890',
   logoUrl: null,
   showPaidStamp: false,
   items: [
