@@ -42,7 +42,7 @@ function App() {
       printRef.current.style.position = 'absolute';
       printRef.current.style.left = '-9999px';
 
-      const imgData = canvas.toDataURL('image/png');
+      const imgData = canvas.toDataURL('image/jpeg', 0.8);
       
       const imgWidth = 210;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
@@ -53,9 +53,10 @@ function App() {
         orientation: 'portrait',
         unit: 'mm',
         format: [imgWidth, pdfHeight],
+        compress: true
       });
 
-      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+      pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
       pdf.save(`${generateInvoiceNumber(data.codename, data.date, data.projectNumber).replace(/\//g, '_')}.pdf`);
     } catch (error) {
       console.error('Error generating PDF:', error);
