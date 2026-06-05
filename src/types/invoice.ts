@@ -26,6 +26,7 @@ export interface InvoiceData {
   paymentTerm: string;
   footerContact: string;
   logoUrl: string | null;
+  customStampUrl: string | null;
   showPaidStamp: boolean;
   items: InvoiceItem[];
   bankAccounts: BankAccount[];
@@ -45,6 +46,7 @@ export const defaultInvoiceData: InvoiceData = {
   paymentTerm: 'Please pay within 15 days of receiving this invoice.',
   footerContact: 'hello@r24studio.com | +62 812 3456 7890',
   logoUrl: null,
+  customStampUrl: null,
   showPaidStamp: false,
   items: [
     {

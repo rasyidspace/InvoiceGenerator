@@ -23,6 +23,21 @@ export function InvoiceForm({ data, updateData, resetData }: InvoiceFormProps) {
     updateData({ logoUrl: null });
   };
 
+  const handleStampUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        updateData({ customStampUrl: event.target?.result as string });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const removeStamp = () => {
+    updateData({ customStampUrl: null });
+  };
+
   const addItem = () => {
     const newItem: InvoiceItem = {
       id: Math.random().toString(36).substring(7),
@@ -279,7 +294,7 @@ export function InvoiceForm({ data, updateData, resetData }: InvoiceFormProps) {
               className="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all"
             />
           </div>
-          <div className="col-span-full flex items-center mt-2">
+          <div className="col-span-full space-y-3 mt-2">
             <label className={`flex items-center gap-2 ${data.paymentStatus !== 'PAID' ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}>
               <input
                 type="checkbox"
@@ -290,6 +305,31 @@ export function InvoiceForm({ data, updateData, resetData }: InvoiceFormProps) {
               />
               <span className="text-sm font-medium text-gray-700">Show PAID stamp on invoice</span>
             </label>
+
+            {data.showPaidStamp && data.paymentStatus === 'PAID' && (
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 pl-6">
+                {data.customStampUrl ? (
+                  <div className="relative inline-block w-fit">
+                    <img src={data.customStampUrl} alt="Custom Stamp" className="h-16 object-contain border rounded-md p-1 bg-gray-50" />
+                    <button
+                      onClick={removeStamp}
+                      className="absolute -top-2 -right-2 bg-white rounded-full p-0.5 shadow hover:bg-gray-100 text-gray-600"
+                    >
+                      <X size={14} />
+                    </button>
+                  </div>
+                ) : (
+                  <label className="flex items-center justify-center gap-2 px-4 py-2 border-2 border-dashed border-gray-300 rounded-lg hover:border-gray-400 hover:bg-gray-50 cursor-pointer text-sm font-medium text-gray-600 transition-colors w-fit">
+                    <Upload size={16} />
+                    Upload Custom Stamp
+                    <input type="file" accept="image/*" onChange={handleStampUpload} className="hidden" />
+                  </label>
+                )}
+                {!data.customStampUrl && (
+                  <span className="text-xs text-gray-500">Default stamp will be used if none uploaded.</span>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </section>

@@ -146,7 +146,7 @@ export const InvoicePreview = forwardRef<HTMLDivElement, InvoicePreviewProps>(({
             {/* PAID Stamp overlay */}
             {data.showPaidStamp && data.paymentStatus === 'PAID' && (
               <div className="absolute bottom-2 right-28 pointer-events-none opacity-80 z-0">
-                <img src={paidStampImg} alt="PAID" className="w-32 h-auto" />
+                <img src={data.customStampUrl || paidStampImg} alt="PAID Stamp" className="w-32 h-auto object-contain" />
               </div>
             )}
           </div>
