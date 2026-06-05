@@ -33,10 +33,10 @@ export interface InvoiceData {
 }
 
 export const defaultInvoiceData: InvoiceData = {
-  studioName: 'R24 Studio',
-  website: 'www.r24studio.com',
+  studioName: 'MeshLab Studio',
+  website: 'www.meshlabstudio.com',
   title: 'INVOICE',
-  codename: 'R24',
+  codename: 'ML',
   projectNumber: '001',
   issuedTo: 'Client Name\nClient Company\nClient Address',
   date: new Date().toISOString().split('T')[0],
@@ -44,7 +44,7 @@ export const defaultInvoiceData: InvoiceData = {
   paymentStatus: 'UNPAID',
   downPayment: 0,
   paymentTerm: 'Please pay within 15 days of receiving this invoice.',
-  footerContact: 'hello@r24studio.com | +62 812 3456 7890',
+  footerContact: 'hello@meshlabstudio.com | +62 812 3456 7890',
   logoUrl: null,
   customStampUrl: null,
   showPaidStamp: false,
