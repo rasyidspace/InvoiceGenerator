@@ -103,8 +103,10 @@ function App() {
 
           {/* Right Column: Live Preview */}
           <div className="w-full xl:flex-1 overflow-x-auto bg-gray-200/50 p-4 sm:p-8 rounded-xl border border-gray-200 flex justify-center items-start min-h-[calc(100vh-8rem)]">
-            <div className="shadow-2xl transition-transform origin-top scale-[0.6] sm:scale-75 lg:scale-90 xl:scale-100">
-              <InvoicePreview data={data} />
+            <div className="w-[317px] min-[400px]:w-[357px] sm:w-[596px] lg:w-[715px] xl:w-[794px] h-[449px] min-[400px]:h-[505px] sm:h-[842px] lg:h-[1011px] xl:h-[1123px] transition-all">
+              <div className="shadow-2xl transition-transform origin-top-left scale-[0.4] min-[400px]:scale-[0.45] sm:scale-75 lg:scale-90 xl:scale-100">
+                <InvoicePreview data={data} />
+              </div>
             </div>
           </div>
           
